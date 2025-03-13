@@ -1,44 +1,34 @@
 import os
-os.system("clear")
+os.system ("clear")
 
-print(""""
-================= VALOR DOS COMBUSTIVEÍS =============                    
-1.Alcool  \t\tAté 25 litros, desconto 2% por  litro
-          \t\tAcima 25 litros, desconto de 4% por litro  
-       
-2.Gasolina   \t\tAté 25 litros, desconto 3% por  litro
-          \t\tAcima 25 litros, desconto de 5% por litro                    
-                 
-""")
+# Preços dos combustíveis
+preco_gasolina = 6.59
+preco_alcool = 3.79
 
-quantidade = (float(input("Digite a quantidade: ")))
-tipo_do_combustivel = (input("Digite o tipo do  do combustível na ordem dos numeros do combustível: "))
-gasolina = float(6.59)
-alcool = float(3.79)
+# Leitura dos dados
+litros = float(input("Digite o número de litros vendidos: "))
+tipo_combustivel = input("Digite o tipo de combustível (A-álcool, G-gasolina): ").upper()
 
-match tipo_do_combustivel:
-    case "a":
-        if quantidade <25:
-            total=(quantidade*tipo_do_combustivel)
-            total_final = (total*0.02)
-            print(f"total: {total}")
-            print("2% de desconto")
-        elif quantidade > 25:
-            total=(quantidade*tipo_do_combustivel)
-            total_final = (total*0.04)
-            print(f"total: {total}")
-            print("4% de desconto")
-    case "g":
-        if quantidade >25:
-            total=(quantidade*tipo_do_combustivel)
-            total_final = (total*0.03)
-            print(f"total: {total}")
-            print("3% de desconto")
-        elif quantidade > 25:
-            total=(quantidade*tipo_do_combustivel)
-            total_final = (total*0.05)
-            print(f"total: {total}")
-            print("5% de desconto")
+# Cálculo e aplicação de desconto
+if tipo_combustivel == 'A':
+    if litros <= 25:
+        # Desconto de 2% por litro
+        preco_com_desconto = preco_alcool * 0.98
+    else:
+        # Desconto de 4% por litro
+        preco_com_desconto = preco_alcool * 0.96
+    valor = litros * preco_com_desconto
+    print(f"O valor a ser pago pelo cliente pelo álcool é: R$ {valor:.2f}")
 
-    case _: 
-        print("combustivel não encontrado")
+elif tipo_combustivel == 'G':
+    if litros <= 25:
+        # Desconto de 3% por litro
+        preco_com_desconto = preco_gasolina * 0.97
+    else:
+        # Desconto de 5% por litro
+        preco_com_desconto = preco_gasolina * 0.95
+    valor = litros * preco_com_desconto
+    print(f"O valor a ser pago pelo cliente pela gasolina é: R$ {valor:.2f}")
+
+else:
+    print("Tipo de combustível inválido. Por favor, digite 'A' para álcool ou 'G' para gasolina.")
