@@ -8,6 +8,8 @@ media = (primeira_unidade + segunda_unidade) / 2
 
 if media >= 6:
     print("Aprovado")
+if media > 4 < 6:
+    print("Recuperação")
 
 else:
     print("reprovado")
@@ -15,3 +17,4 @@ else:
 print(f"Media: {media}")
 print(f"Primeira unidade: {primeira_unidade}")
 print(f"Segunda unidade: {segunda_unidade}")
+
